@@ -15,18 +15,19 @@ def index(request):
     recent_blogs=Blog.objects.all().order_by('-created_at')[:3]
         
     
-    default_value=""
+    default_value=" "
+    
     context={
-        "company_name": getattr(general_info,"company_name",default_value),
-        "location": getattr(general_info,"location",default_value),
-        "email": getattr(general_info,"email",default_value),
-        "phone":getattr(general_info,"phone",default_value),
-        "open_hours":getattr(general_info,"open_hours",default_value),
-        "video_url":getattr(general_info,"video_url",default_value),
-        "twitter_url":getattr(general_info,"twitter_url",default_value),
-        "facebook_url":getattr(general_info,"facebook_url",default_value),
-        "instagram_url":getattr(general_info,"instagram_url",default_value),
-        "linkding_url":getattr(general_info,"linkding_url",default_value),
+        "company_name": getattr(general_info, "company_name", default_value),
+        "location": getattr(general_info, "location", default_value),
+        "email": getattr(general_info, "email", default_value),
+        "phone":getattr(general_info, "phone", default_value),
+        "open_hours":getattr(general_info, "open_hours", default_value),
+        "video_url":getattr(general_info,"video_url", default_value),
+        "twitter_url":getattr(general_info,"twitter_url", default_value),
+        "facebook_url":getattr(general_info,"facebook_url", default_value),
+        "instagram_url":getattr(general_info,"instagram_url", default_value),
+        "linkding_url":getattr(general_info,"linkding_url", default_value),
 
         
         "services": services,
