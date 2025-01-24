@@ -17,7 +17,8 @@ from decouple import config,RepositoryEnv
 
 os.environ['SSL_CERT_FILE'] = certifi.where()
 
-env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../src/.env') # Adjust path if needed
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # This points to src/
+env_path = os.path.join(BASE_DIR, '.env')  # Add .env located in src/
 config = config(RepositoryEnv(env_path))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
