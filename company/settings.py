@@ -94,12 +94,28 @@ WSGI_APPLICATION = 'company.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+if os.environ.get('CIRCUMEO_ENV') == 'production':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ.get('POSTGRES_DB'),  # Database name from environment
+            'USER': os.environ.get('POSTGRES_USER'),  # Database user from environment
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),  # Password from environment
+            'HOST': os.environ.get('POSTGRES_HOST', default='localhost'),  # Host from environment
+            'PORT': os.environ.get('POSTGRES_PORT', default='5432'),  # Port from environment
+        }
     }
-}
+else:
+    # Default to SQLite for local development
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+
 
 
 # Password validation

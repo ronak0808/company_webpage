@@ -15,7 +15,7 @@ def index(request):
     recent_blogs=Blog.objects.all().order_by('-created_at')[:3]
         
     
-    default_value=" "
+    default_value=""
     
     context={
         "company_name": getattr(general_info, "company_name", default_value),
