@@ -17,12 +17,15 @@ from decouple import config,RepositoryEnv
 
 os.environ['SSL_CERT_FILE'] = certifi.where()
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # This points to src/
-env_path = os.path.join(BASE_DIR, '.env')  # Add .env located in src/
-config = config(RepositoryEnv(env_path))
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+env_path = os.path.join(BASE_DIR, '.env')  # Add .env located in src/
+config = config(RepositoryEnv(env_path))
+
 
 
 # Quick-start development settings - unsuitable for production
