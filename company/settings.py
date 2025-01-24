@@ -23,8 +23,7 @@ os.environ['SSL_CERT_FILE'] = certifi.where()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-env_path = os.path.join(BASE_DIR, '.env')  # Add .env located in src/
-config = config(RepositoryEnv(env_path))
+
 
 
 
